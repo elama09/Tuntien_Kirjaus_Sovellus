@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YdinvoimalaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kirjaukset">
+          <Key>
+            <PropertyRef Name="Kirjaus_id" />
+          </Key>
+          <Property Name="Kirjaus_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Käyttäjä_id" Type="int" Nullable="false" />
+          <Property Name="Kirjauspäivä" Type="date" Nullable="false" />
+          <Property Name="Päivä" Type="date" Nullable="false" />
+          <Property Name="Aloitusaika" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Lopetusaika" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Lisätiedot" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Työntekijät">
+          <Key>
+            <PropertyRef Name="Käyttäjä_id" />
+          </Key>
+          <Property Name="Käyttäjä_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Käyttäjätunnus" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Salasana" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Luomispäivä" Type="date" Nullable="false" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Kirjaukset_Työntekijät">
+          <End Role="Työntekijät" Type="Self.Työntekijät" Multiplicity="1" />
+          <End Role="Kirjaukset" Type="Self.Kirjaukset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Työntekijät">
+              <PropertyRef Name="Käyttäjä_id" />
+            </Principal>
+            <Dependent Role="Kirjaukset">
+              <PropertyRef Name="Käyttäjä_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YdinvoimalaDBModelStoreContainer">
+          <EntitySet Name="Kirjaukset" EntityType="Self.Kirjaukset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Työntekijät" EntityType="Self.Työntekijät" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kirjaukset_Työntekijät" Association="Self.FK_Kirjaukset_Työntekijät">
+            <End Role="Työntekijät" EntitySet="Työntekijät" />
+            <End Role="Kirjaukset" EntitySet="Kirjaukset" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YdinvoimalaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kirjaukset">
+          <Key>
+            <PropertyRef Name="Kirjaus_id" />
+          </Key>
+          <Property Name="Kirjaus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Käyttäjä_id" Type="Int32" Nullable="false" />
+          <Property Name="Kirjauspäivä" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Päivä" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Aloitusaika" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Lopetusaika" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Lisätiedot" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Työntekijät" Relationship="Self.FK_Kirjaukset_Työntekijät" FromRole="Kirjaukset" ToRole="Työntekijät" />
+        </EntityType>
+        <EntityType Name="Työntekijät">
+          <Key>
+            <PropertyRef Name="Käyttäjä_id" />
+          </Key>
+          <Property Name="Käyttäjä_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Etunimi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sukunimi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Käyttäjätunnus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salasana" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Luomispäivä" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Admin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Kirjaukset" Relationship="Self.FK_Kirjaukset_Työntekijät" FromRole="Työntekijät" ToRole="Kirjaukset" />
+        </EntityType>
+        <Association Name="FK_Kirjaukset_Työntekijät">
+          <End Role="Työntekijät" Type="Self.Työntekijät" Multiplicity="1" />
+          <End Role="Kirjaukset" Type="Self.Kirjaukset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Työntekijät">
+              <PropertyRef Name="Käyttäjä_id" />
+            </Principal>
+            <Dependent Role="Kirjaukset">
+              <PropertyRef Name="Käyttäjä_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YdinvoimalaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kirjaukset" EntityType="Self.Kirjaukset" />
+          <EntitySet Name="Työntekijät" EntityType="Self.Työntekijät" />
+          <AssociationSet Name="FK_Kirjaukset_Työntekijät" Association="Self.FK_Kirjaukset_Työntekijät">
+            <End Role="Työntekijät" EntitySet="Työntekijät" />
+            <End Role="Kirjaukset" EntitySet="Kirjaukset" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YdinvoimalaDBModelStoreContainer" CdmEntityContainer="YdinvoimalaDBEntities">
+          <EntitySetMapping Name="Kirjaukset">
+            <EntityTypeMapping TypeName="YdinvoimalaDBModel.Kirjaukset">
+              <MappingFragment StoreEntitySet="Kirjaukset">
+                <ScalarProperty Name="Kirjaus_id" ColumnName="Kirjaus_id" />
+                <ScalarProperty Name="Käyttäjä_id" ColumnName="Käyttäjä_id" />
+                <ScalarProperty Name="Kirjauspäivä" ColumnName="Kirjauspäivä" />
+                <ScalarProperty Name="Päivä" ColumnName="Päivä" />
+                <ScalarProperty Name="Aloitusaika" ColumnName="Aloitusaika" />
+                <ScalarProperty Name="Lopetusaika" ColumnName="Lopetusaika" />
+                <ScalarProperty Name="Lisätiedot" ColumnName="Lisätiedot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Työntekijät">
+            <EntityTypeMapping TypeName="YdinvoimalaDBModel.Työntekijät">
+              <MappingFragment StoreEntitySet="Työntekijät">
+                <ScalarProperty Name="Käyttäjä_id" ColumnName="Käyttäjä_id" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Käyttäjätunnus" ColumnName="Käyttäjätunnus" />
+                <ScalarProperty Name="Salasana" ColumnName="Salasana" />
+                <ScalarProperty Name="Luomispäivä" ColumnName="Luomispäivä" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
