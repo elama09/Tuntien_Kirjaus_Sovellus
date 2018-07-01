@@ -16,5 +16,11 @@ namespace Kirjautuminen___DataBase
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(kenttä_kirjautuminen.Text);
+            form2.ShowDialog();
+        }
     }
 }
