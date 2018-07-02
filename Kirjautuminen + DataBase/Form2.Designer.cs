@@ -43,9 +43,9 @@
             this.kenttäSalasana = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.nappi_ulosKirjautuminen = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.kenttäPäivä = new System.Windows.Forms.DateTimePicker();
+            this.kenttäAloitus = new System.Windows.Forms.DateTimePicker();
+            this.kenttäLopetus = new System.Windows.Forms.DateTimePicker();
             this.pvm = new System.Windows.Forms.Label();
             this.klo = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -56,7 +56,7 @@
             this.nappiAdminTrue = new System.Windows.Forms.RadioButton();
             this.nappiAdminFalse = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.nappiTallenna = new System.Windows.Forms.Button();
             this.adminToiminnot = new System.Windows.Forms.GroupBox();
             this.kenttäId = new System.Windows.Forms.NumericUpDown();
             this.nappiPäivitä = new System.Windows.Forms.Button();
@@ -79,18 +79,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(71, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Kirjautunut:";
             // 
             // kirjautunut_käyttäjä
             // 
             this.kirjautunut_käyttäjä.AutoSize = true;
+            this.kirjautunut_käyttäjä.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.kirjautunut_käyttäjä.Location = new System.Drawing.Point(78, 9);
             this.kirjautunut_käyttäjä.Name = "kirjautunut_käyttäjä";
-            this.kirjautunut_käyttäjä.Size = new System.Drawing.Size(71, 13);
+            this.kirjautunut_käyttäjä.Size = new System.Drawing.Size(89, 16);
             this.kirjautunut_käyttäjä.TabIndex = 2;
             this.kirjautunut_käyttäjä.Text = "käyttäjän nimi";
             // 
@@ -177,7 +179,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(592, 67);
+            this.label7.Location = new System.Drawing.Point(607, 67);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 17);
             this.label7.TabIndex = 13;
@@ -193,51 +195,53 @@
             this.nappi_ulosKirjautuminen.UseVisualStyleBackColor = true;
             this.nappi_ulosKirjautuminen.Click += new System.EventHandler(this.nappi_ulosKirjautuminen_Click);
             // 
-            // dateTimePicker1
+            // kenttäPäivä
             // 
-            this.dateTimePicker1.CustomFormat = "ddmmyyyy";
-            this.dateTimePicker1.Location = new System.Drawing.Point(541, 105);
-            this.dateTimePicker1.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 16;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 1, 11, 47, 28, 0);
+            this.kenttäPäivä.CustomFormat = "ddmmyyyy";
+            this.kenttäPäivä.Location = new System.Drawing.Point(556, 105);
+            this.kenttäPäivä.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.kenttäPäivä.Name = "kenttäPäivä";
+            this.kenttäPäivä.Size = new System.Drawing.Size(200, 20);
+            this.kenttäPäivä.TabIndex = 16;
+            this.kenttäPäivä.Value = new System.DateTime(2018, 7, 1, 11, 47, 28, 0);
             // 
-            // dateTimePicker2
+            // kenttäAloitus
             // 
-            this.dateTimePicker2.CustomFormat = "HH:mm";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(541, 149);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 17;
+            this.kenttäAloitus.CustomFormat = "HH:mm";
+            this.kenttäAloitus.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kenttäAloitus.Location = new System.Drawing.Point(556, 149);
+            this.kenttäAloitus.Name = "kenttäAloitus";
+            this.kenttäAloitus.ShowUpDown = true;
+            this.kenttäAloitus.Size = new System.Drawing.Size(200, 20);
+            this.kenttäAloitus.TabIndex = 17;
             // 
-            // dateTimePicker3
+            // kenttäLopetus
             // 
-            this.dateTimePicker3.CustomFormat = "HH:mm";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(541, 191);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.ShowUpDown = true;
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker3.TabIndex = 18;
+            this.kenttäLopetus.CustomFormat = "HH:mm";
+            this.kenttäLopetus.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kenttäLopetus.Location = new System.Drawing.Point(556, 191);
+            this.kenttäLopetus.Name = "kenttäLopetus";
+            this.kenttäLopetus.ShowUpDown = true;
+            this.kenttäLopetus.Size = new System.Drawing.Size(200, 20);
+            this.kenttäLopetus.TabIndex = 18;
             // 
             // pvm
             // 
             this.pvm.AutoSize = true;
+            this.pvm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.pvm.Location = new System.Drawing.Point(332, 9);
             this.pvm.Name = "pvm";
-            this.pvm.Size = new System.Drawing.Size(34, 13);
+            this.pvm.Size = new System.Drawing.Size(43, 16);
             this.pvm.TabIndex = 19;
             this.pvm.Text = "Päivä";
             // 
             // klo
             // 
             this.klo.AutoSize = true;
+            this.klo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.klo.Location = new System.Drawing.Point(388, 9);
             this.klo.Name = "klo";
-            this.klo.Size = new System.Drawing.Size(28, 13);
+            this.klo.Size = new System.Drawing.Size(35, 16);
             this.klo.TabIndex = 20;
             this.klo.Text = "Aika";
             // 
@@ -249,33 +253,36 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(475, 239);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.label8.Location = new System.Drawing.Point(475, 231);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.Size = new System.Drawing.Size(66, 16);
             this.label8.TabIndex = 21;
             this.label8.Text = "Lisätiedot";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(475, 155);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.label9.Location = new System.Drawing.Point(487, 149);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 13);
+            this.label9.Size = new System.Drawing.Size(48, 16);
             this.label9.TabIndex = 22;
             this.label9.Text = "Aloitus";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(475, 194);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.label10.Location = new System.Drawing.Point(479, 195);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.Size = new System.Drawing.Size(56, 16);
             this.label10.TabIndex = 23;
             this.label10.Text = "Lopetus";
             // 
             // kenttäLisätiedot
             // 
-            this.kenttäLisätiedot.Location = new System.Drawing.Point(541, 231);
+            this.kenttäLisätiedot.Location = new System.Drawing.Point(556, 231);
             this.kenttäLisätiedot.MaxLength = 100;
             this.kenttäLisätiedot.Multiline = true;
             this.kenttäLisätiedot.Name = "kenttäLisätiedot";
@@ -313,14 +320,15 @@
             this.label11.TabIndex = 27;
             this.label11.Text = "Admin oikeus";
             // 
-            // button1
+            // nappiTallenna
             // 
-            this.button1.Location = new System.Drawing.Point(595, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Tallenna";
-            this.button1.UseVisualStyleBackColor = true;
+            this.nappiTallenna.Location = new System.Drawing.Point(619, 355);
+            this.nappiTallenna.Name = "nappiTallenna";
+            this.nappiTallenna.Size = new System.Drawing.Size(75, 23);
+            this.nappiTallenna.TabIndex = 28;
+            this.nappiTallenna.Text = "Tallenna";
+            this.nappiTallenna.UseVisualStyleBackColor = true;
+            this.nappiTallenna.Click += new System.EventHandler(this.nappiTallenna_Click);
             // 
             // adminToiminnot
             // 
@@ -397,16 +405,16 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.kenttäUseampiLöytyi);
             this.Controls.Add(this.adminToiminnot);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.nappiTallenna);
             this.Controls.Add(this.kenttäLisätiedot);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.klo);
             this.Controls.Add(this.pvm);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.kenttäLopetus);
+            this.Controls.Add(this.kenttäAloitus);
+            this.Controls.Add(this.kenttäPäivä);
             this.Controls.Add(this.nappi_ulosKirjautuminen);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.kirjautunut_käyttäjä);
@@ -437,9 +445,9 @@
         private System.Windows.Forms.TextBox kenttäSalasana;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button nappi_ulosKirjautuminen;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker kenttäPäivä;
+        private System.Windows.Forms.DateTimePicker kenttäAloitus;
+        private System.Windows.Forms.DateTimePicker kenttäLopetus;
         private System.Windows.Forms.Label pvm;
         private System.Windows.Forms.Label klo;
         private System.Windows.Forms.Timer timer1;
@@ -450,7 +458,7 @@
         private System.Windows.Forms.RadioButton nappiAdminTrue;
         private System.Windows.Forms.RadioButton nappiAdminFalse;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button nappiTallenna;
         private System.Windows.Forms.GroupBox adminToiminnot;
         private System.Windows.Forms.Button nappiPäivitä;
         private System.Windows.Forms.Button nappiEtsi;

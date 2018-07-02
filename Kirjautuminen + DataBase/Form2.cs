@@ -13,10 +13,13 @@ namespace Kirjautuminen___DataBase
 {
     public partial class Form2 : Form
     {
+        Työntekijät kirjautunutTyöntekijä;
+
         //Form2 luominen - konstruktori
         public Form2(Työntekijät työntekijä)
         {
             InitializeComponent();
+            kirjautunutTyöntekijä = työntekijä;
             kirjautunut_käyttäjä.Text = työntekijä.Etunimi;
             if (työntekijä.Admin == false)
             {
@@ -136,7 +139,8 @@ namespace Kirjautuminen___DataBase
             {
                 MessageBox.Show("Täytä kaikki kentät");
                 return;
-            } else if (onkoKäyttäjätunnustaOlemassa != null)
+            }
+            else if (onkoKäyttäjätunnustaOlemassa != null)
             {
                 MessageBox.Show("Käyttäjätunnus on olemassa");
                 return;
@@ -162,9 +166,6 @@ namespace Kirjautuminen___DataBase
                 TyhjennäKaikkiKentät();
             }
         }
-
-
-        
 
         //Apumetodi - kenttien tyhjennyt
         public void TyhjennäKaikkiKentät()
@@ -218,5 +219,39 @@ namespace Kirjautuminen___DataBase
         {
             Close();
         }
+
+        //Tallenna tuntikirjaus nappi
+        private void nappiTallenna_Click(object sender, EventArgs e)
+        {
+            YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
+            var onkoKirjaustaSamallePäivälle = kirjautunutTyöntekijä.Kirjaukset.Where(x => x.Päivä.Date == kenttäPäivä.Value.Date).FirstOrDefault();
+
+            if (kenttäAloitus.Value >= kenttäLopetus.Value)
+            {
+                MessageBox.Show("Lopetusaika ei voi olla ennen aloitusaikaa");
+                return;
+            }
+            else if (onkoKirjaustaSamallePäivälle != null)
+            {
+                MessageBox.Show("Käyttäjällä on jo tuntikirjaus merkittynä tuolle päivälle, kirjaus ei onnistu");
+                return;
+            }
+
+            var uusiKirjaus = new Kirjaukset
+            {
+                Käyttäjä_id = kirjautunutTyöntekijä.Käyttäjä_id,
+                Kirjauspäivä = DateTime.Now.Date,
+                Päivä = kenttäPäivä.Value.Date,
+                Aloitusaika = TimeSpan.Parse(kenttäAloitus.Value.TimeOfDay.ToString().Substring(0, 6) + "00"),
+                Lopetusaika = TimeSpan.Parse(kenttäLopetus.Value.TimeOfDay.ToString().Substring(0, 6) + "00"),
+                Lisätiedot = kenttäLisätiedot.Text
+            };
+
+            kirjautunutTyöntekijä.Kirjaukset.Add(uusiKirjaus);
+            dBEntities.SaveChanges();
+            TyhjennäKaikkiKentät();
+            MessageBox.Show("Kirjaus onnistui tietokantaan");
+        }
     }
 }
+
