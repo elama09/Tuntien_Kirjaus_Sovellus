@@ -52,15 +52,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.kenttäLisätiedot = new System.Windows.Forms.TextBox();
             this.nappiAdminTrue = new System.Windows.Forms.RadioButton();
             this.nappiAdminFalse = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.adminToiminnot = new System.Windows.Forms.GroupBox();
-            this.nappiEtsi = new System.Windows.Forms.Button();
-            this.nappiPäivitä = new System.Windows.Forms.Button();
             this.kenttäId = new System.Windows.Forms.NumericUpDown();
+            this.nappiPäivitä = new System.Windows.Forms.Button();
+            this.nappiEtsi = new System.Windows.Forms.Button();
+            this.kenttäUseampiLöytyi = new System.Windows.Forms.ComboBox();
             this.adminToiminnot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kenttäId)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +74,7 @@
             this.nappiLuo.TabIndex = 0;
             this.nappiLuo.Text = "Luo";
             this.nappiLuo.UseVisualStyleBackColor = true;
+            this.nappiLuo.Click += new System.EventHandler(this.nappiLuo_Click);
             // 
             // label1
             // 
@@ -140,6 +142,7 @@
             // kenttäEtunimi
             // 
             this.kenttäEtunimi.Location = new System.Drawing.Point(110, 45);
+            this.kenttäEtunimi.MaxLength = 30;
             this.kenttäEtunimi.Name = "kenttäEtunimi";
             this.kenttäEtunimi.Size = new System.Drawing.Size(151, 21);
             this.kenttäEtunimi.TabIndex = 9;
@@ -147,6 +150,7 @@
             // kenttäSukunimi
             // 
             this.kenttäSukunimi.Location = new System.Drawing.Point(110, 71);
+            this.kenttäSukunimi.MaxLength = 30;
             this.kenttäSukunimi.Name = "kenttäSukunimi";
             this.kenttäSukunimi.Size = new System.Drawing.Size(151, 21);
             this.kenttäSukunimi.TabIndex = 10;
@@ -155,6 +159,7 @@
             // 
             this.kenttäKäyttäjätunnus.BackColor = System.Drawing.SystemColors.Window;
             this.kenttäKäyttäjätunnus.Location = new System.Drawing.Point(110, 97);
+            this.kenttäKäyttäjätunnus.MaxLength = 20;
             this.kenttäKäyttäjätunnus.Name = "kenttäKäyttäjätunnus";
             this.kenttäKäyttäjätunnus.Size = new System.Drawing.Size(151, 21);
             this.kenttäKäyttäjätunnus.TabIndex = 11;
@@ -162,6 +167,7 @@
             // kenttäSalasana
             // 
             this.kenttäSalasana.Location = new System.Drawing.Point(110, 123);
+            this.kenttäSalasana.MaxLength = 50;
             this.kenttäSalasana.Name = "kenttäSalasana";
             this.kenttäSalasana.PasswordChar = '*';
             this.kenttäSalasana.Size = new System.Drawing.Size(151, 21);
@@ -185,6 +191,7 @@
             this.nappi_ulosKirjautuminen.TabIndex = 14;
             this.nappi_ulosKirjautuminen.Text = "Kirjaudu ulos";
             this.nappi_ulosKirjautuminen.UseVisualStyleBackColor = true;
+            this.nappi_ulosKirjautuminen.Click += new System.EventHandler(this.nappi_ulosKirjautuminen_Click);
             // 
             // dateTimePicker1
             // 
@@ -266,13 +273,14 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Lopetus";
             // 
-            // textBox6
+            // kenttäLisätiedot
             // 
-            this.textBox6.Location = new System.Drawing.Point(541, 231);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(200, 118);
-            this.textBox6.TabIndex = 24;
+            this.kenttäLisätiedot.Location = new System.Drawing.Point(541, 231);
+            this.kenttäLisätiedot.MaxLength = 100;
+            this.kenttäLisätiedot.Multiline = true;
+            this.kenttäLisätiedot.Name = "kenttäLisätiedot";
+            this.kenttäLisätiedot.Size = new System.Drawing.Size(200, 118);
+            this.kenttäLisätiedot.TabIndex = 24;
             // 
             // nappiAdminTrue
             // 
@@ -343,6 +351,24 @@
             this.adminToiminnot.TabStop = false;
             this.adminToiminnot.Text = "Admin";
             // 
+            // kenttäId
+            // 
+            this.kenttäId.Location = new System.Drawing.Point(110, 17);
+            this.kenttäId.Name = "kenttäId";
+            this.kenttäId.Size = new System.Drawing.Size(151, 21);
+            this.kenttäId.TabIndex = 30;
+            this.kenttäId.ThousandsSeparator = true;
+            // 
+            // nappiPäivitä
+            // 
+            this.nappiPäivitä.Location = new System.Drawing.Point(186, 186);
+            this.nappiPäivitä.Name = "nappiPäivitä";
+            this.nappiPäivitä.Size = new System.Drawing.Size(75, 23);
+            this.nappiPäivitä.TabIndex = 29;
+            this.nappiPäivitä.Text = "Päivitä";
+            this.nappiPäivitä.UseVisualStyleBackColor = true;
+            this.nappiPäivitä.Click += new System.EventHandler(this.nappiPäivitä_Click);
+            // 
             // nappiEtsi
             // 
             this.nappiEtsi.Location = new System.Drawing.Point(9, 186);
@@ -353,31 +379,26 @@
             this.nappiEtsi.UseVisualStyleBackColor = true;
             this.nappiEtsi.Click += new System.EventHandler(this.nappiEtsi_Click);
             // 
-            // nappiPäivitä
+            // kenttäUseampiLöytyi
             // 
-            this.nappiPäivitä.Location = new System.Drawing.Point(186, 186);
-            this.nappiPäivitä.Name = "nappiPäivitä";
-            this.nappiPäivitä.Size = new System.Drawing.Size(75, 23);
-            this.nappiPäivitä.TabIndex = 29;
-            this.nappiPäivitä.Text = "Päivitä";
-            this.nappiPäivitä.UseVisualStyleBackColor = true;
-            // 
-            // kenttäId
-            // 
-            this.kenttäId.Location = new System.Drawing.Point(110, 17);
-            this.kenttäId.Name = "kenttäId";
-            this.kenttäId.Size = new System.Drawing.Size(151, 21);
-            this.kenttäId.TabIndex = 30;
-            this.kenttäId.ThousandsSeparator = true;
+            this.kenttäUseampiLöytyi.FormattingEnabled = true;
+            this.kenttäUseampiLöytyi.Location = new System.Drawing.Point(12, 344);
+            this.kenttäUseampiLöytyi.Name = "kenttäUseampiLöytyi";
+            this.kenttäUseampiLöytyi.Size = new System.Drawing.Size(137, 21);
+            this.kenttäUseampiLöytyi.TabIndex = 30;
+            this.kenttäUseampiLöytyi.Visible = false;
+            this.kenttäUseampiLöytyi.SelectionChangeCommitted += new System.EventHandler(this.kenttäUseampiLöytyi_SelectionChangeCommitted);
+            this.kenttäUseampiLöytyi.Leave += new System.EventHandler(this.kenttäUseampiLöytyi_Leave);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.kenttäUseampiLöytyi);
             this.Controls.Add(this.adminToiminnot);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.kenttäLisätiedot);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -411,7 +432,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox kenttäEtunimi;
         private System.Windows.Forms.TextBox kenttäSukunimi;
         private System.Windows.Forms.TextBox kenttäKäyttäjätunnus;
         private System.Windows.Forms.TextBox kenttäSalasana;
@@ -426,7 +446,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox kenttäLisätiedot;
         private System.Windows.Forms.RadioButton nappiAdminTrue;
         private System.Windows.Forms.RadioButton nappiAdminFalse;
         private System.Windows.Forms.Label label11;
@@ -435,5 +455,7 @@
         private System.Windows.Forms.Button nappiPäivitä;
         private System.Windows.Forms.Button nappiEtsi;
         private System.Windows.Forms.NumericUpDown kenttäId;
+        private System.Windows.Forms.ComboBox kenttäUseampiLöytyi;
+        private System.Windows.Forms.TextBox kenttäEtunimi;
     }
 }

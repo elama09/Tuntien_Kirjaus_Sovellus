@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Kirjautuminen___DataBase.Models
 {
-    class Toimenpiteet
+    public class Toimenpiteet
     {
+
     }
 }
