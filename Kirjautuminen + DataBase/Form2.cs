@@ -247,7 +247,8 @@ namespace Kirjautuminen___DataBase
                 Lisätiedot = kenttäLisätiedot.Text
             };
 
-            kirjautunutTyöntekijä.Kirjaukset.Add(uusiKirjaus);
+            dBEntities.Kirjaukset.Add(uusiKirjaus);
+            //kirjautunutTyöntekijä.Kirjaukset.Add(uusiKirjaus); - tämä ei toiminut, miksi?
             dBEntities.SaveChanges();
             TyhjennäKaikkiKentät();
             MessageBox.Show("Kirjaus onnistui tietokantaan");
