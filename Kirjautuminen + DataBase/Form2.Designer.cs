@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.nappiLuo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.kirjautunut_käyttäjä = new System.Windows.Forms.Label();
@@ -479,6 +480,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.kirjautunut_käyttäjä);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Superjärjestelmä - Kirjaukset";
             this.Load += new System.EventHandler(this.Form2_Load);
