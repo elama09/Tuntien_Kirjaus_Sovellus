@@ -223,7 +223,9 @@ namespace Kirjautuminen___DataBase
         private void nappiTallenna_Click(object sender, EventArgs e)
         {
             YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
-            var onkoKirjaustaSamallePäivälle = kirjautunutTyöntekijä.Kirjaukset.Where(x => x.Päivä.Date == kenttäPäivä.Value.Date).FirstOrDefault();
+
+            var onkoKirjaustaSamallePäivälle = dBEntities.Kirjaukset.Where(x => x.Käyttäjä_id == kirjautunutTyöntekijä.Käyttäjä_id &&
+            x.Päivä == kenttäPäivä.Value).FirstOrDefault();
 
             if (kenttäAloitus.Value >= kenttäLopetus.Value)
             {
