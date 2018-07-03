@@ -69,7 +69,6 @@
     <Compile Include="Models\Kirjaukset.cs">
       <DependentUpon>YdinvoimalaDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Toimenpiteet.cs" />
     <Compile Include="Models\Työntekijät.cs">
       <DependentUpon>YdinvoimalaDBModel.tt</DependentUpon>
     </Compile>

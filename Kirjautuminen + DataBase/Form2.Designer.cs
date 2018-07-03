@@ -480,7 +480,7 @@
             this.Controls.Add(this.kirjautunut_käyttäjä);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Superjärjestelmä - Kirjaukset";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.adminToiminnot.ResumeLayout(false);
             this.adminToiminnot.PerformLayout();
