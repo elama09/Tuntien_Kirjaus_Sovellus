@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace Kirjautuminen___DataBase
             timer1.Start();
             pvm.Text = DateTime.Now.ToShortDateString();
             klo.Text = DateTime.Now.ToLongTimeString();
+            YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
+            kenttäKaikkiTyöntekijät.Items.AddRange(dBEntities.Työntekijät.Select(x => x.Käyttäjä_id.ToString() + " " + x.Käyttäjätunnus.ToString()).ToArray());
         }
 
         //Kellon juoksemis Timer
@@ -252,6 +255,78 @@ namespace Kirjautuminen___DataBase
             dBEntities.SaveChanges();
             TyhjennäKaikkiKentät();
             MessageBox.Show("Kirjaus onnistui tietokantaan");
+        }
+
+        //Kirjoita työntekijät tunnit tiedostoon nappi
+        private void nappiTulosta_Click(object sender, EventArgs e)
+        {
+            if (kenttäKaikkiTyöntekijät.Text.Length == 0)
+            {
+                MessageBox.Show("Valitse työntekijä listasta");
+                return;
+            }
+
+            YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
+            var valittuID = int.Parse(kenttäKaikkiTyöntekijät.SelectedItem.ToString().Split(' ').FirstOrDefault());
+            var kaikkiKirjaukset = dBEntities.Kirjaukset.Where(x => x.Käyttäjä_id == valittuID).ToList();
+            var työntekijä = dBEntities.Työntekijät.Where(x => x.Käyttäjä_id == valittuID).FirstOrDefault();
+            var vainOikeatKirjaukset = kaikkiKirjaukset.Where(x => x.Päivä >= kenttäTulostaAloitusPäivä.Value.Date && x.Päivä <= kenttäTulostaLopetusPäivä.Value.Date).ToList();
+
+            if (vainOikeatKirjaukset.Count != 0)
+            {
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.Filter = "Text File|*.txt";
+                saveFile.FileName = "Tuntikirjaukset";
+
+                if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string path = saveFile.FileName;
+                    StreamWriter sw = new StreamWriter(File.Create(path));
+
+                    sw.WriteLine("ID {0}, {1} {2}, käyttäjätunnus: {3}", työntekijä.Käyttäjä_id, työntekijä.Etunimi, työntekijä.Sukunimi, työntekijä.Käyttäjätunnus);
+                    sw.WriteLine();
+                    foreach (var item in vainOikeatKirjaukset)
+                    {
+                        sw.WriteLine(item.Päivä.ToShortDateString() + " " + item.Aloitusaika.ToString().Substring(0,5) + " " +
+                            item.Lopetusaika.ToString().Substring(0, 5) + " " + item.Lisätiedot);
+                    }
+                    sw.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Työntekijällä ei ole kirjauksia");
+            }
+        }
+
+        private void nappiPoista_Click(object sender, EventArgs e)
+        {
+            if (kenttäKaikkiTyöntekijät.Text.Length == 0)
+            {
+                MessageBox.Show("Valitse työntekijä keneltä poistetaan kirjauksia");
+                return;
+            }
+
+            YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
+            var valittuID = int.Parse(kenttäKaikkiTyöntekijät.SelectedItem.ToString().Split(' ').FirstOrDefault());
+            var kaikkiKirjaukset = dBEntities.Kirjaukset.Where(x => x.Käyttäjä_id == valittuID).ToList();
+            var työntekijä = dBEntities.Työntekijät.Where(x => x.Käyttäjä_id == valittuID).FirstOrDefault();
+            var vainOikeatKirjaukset = kaikkiKirjaukset.Where(x => x.Päivä >= kenttäTulostaAloitusPäivä.Value.Date && x.Päivä <= kenttäTulostaLopetusPäivä.Value.Date).ToList();
+
+            if (vainOikeatKirjaukset.Count != 0)
+            {
+                foreach (var item in vainOikeatKirjaukset)
+                {
+                    dBEntities.Kirjaukset.Remove(item);
+                }
+                dBEntities.SaveChanges();
+                MessageBox.Show("Valitut kirjaukset ovat poistettu");
+            }
+            else
+            {
+                MessageBox.Show("Työntekijällä ei ole kirjauksia");
+            }
+
         }
     }
 }

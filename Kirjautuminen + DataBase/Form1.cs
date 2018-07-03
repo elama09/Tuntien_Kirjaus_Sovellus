@@ -18,6 +18,7 @@ namespace Kirjautuminen___DataBase
             InitializeComponent();
         }
 
+        //Kirjaudu nappi etusivulla
         private void button1_Click(object sender, EventArgs e)
         {
             YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
@@ -36,9 +37,12 @@ namespace Kirjautuminen___DataBase
                 kenttä_kirjautuminen.Clear();
                 kenttä_salasana.Clear();
             }
+        }
 
-
-
+        //Lopeta nappi etusivulla
+        private void nappiLopeta_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
