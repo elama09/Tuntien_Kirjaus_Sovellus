@@ -46,12 +46,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0273C6E2FC45A8870D1B73CA5E7CDB38"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_07D42B3E21EE4F238CE10EC722D9BE38"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -65,6 +59,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F076E90E661D625CA52F12D227B5FB71"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0273C6E2FC45A8870D1B73CA5E7CDB38"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -85,6 +85,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -101,6 +117,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -291,7 +315,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Ydinjärjestelmä"
         "ProductCode" = "8:{4668BAB5-DCDE-4A29-B74F-E34BCA2728D9}"
-        "PackageCode" = "8:{FB05132A-8DDB-4FCB-9EC8-DB47F69EA7DB}"
+        "PackageCode" = "8:{A3E31F41-3548-4BB6-8694-20B1A9079F9D}"
         "UpgradeCode" = "8:{0116A556-038F-42EA-88C7-7D26C2CCF9FF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -413,7 +437,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A0533C233B2B4C11B860C45D0C6AECA2"
             {
-            "Name" = "8:Ydinjärjestelmä (Active)"
+            "Name" = "8:Ydinjärjestelmä"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -427,7 +451,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BEF0278AD3454BAD83F009218CFF3160"
             {
-            "Name" = "8:Ydinjärjestelmä (Active)"
+            "Name" = "8:Ydinjärjestelmä"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
