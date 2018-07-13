@@ -59,15 +59,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.nappiTallenna = new System.Windows.Forms.Button();
             this.adminToiminnot = new System.Windows.Forms.GroupBox();
+            this.kenttäKaikkiTyöntekijät = new System.Windows.Forms.ComboBox();
+            this.kenttäTulostaLopetusPäivä = new System.Windows.Forms.DateTimePicker();
+            this.kenttäTulostaAloitusPäivä = new System.Windows.Forms.DateTimePicker();
+            this.nappiPoista = new System.Windows.Forms.Button();
+            this.nappiTulosta = new System.Windows.Forms.Button();
             this.kenttäId = new System.Windows.Forms.NumericUpDown();
             this.nappiPäivitä = new System.Windows.Forms.Button();
             this.nappiEtsi = new System.Windows.Forms.Button();
             this.kenttäUseampiLöytyi = new System.Windows.Forms.ComboBox();
-            this.nappiTulosta = new System.Windows.Forms.Button();
-            this.nappiPoista = new System.Windows.Forms.Button();
-            this.kenttäTulostaAloitusPäivä = new System.Windows.Forms.DateTimePicker();
-            this.kenttäTulostaLopetusPäivä = new System.Windows.Forms.DateTimePicker();
-            this.kenttäKaikkiTyöntekijät = new System.Windows.Forms.ComboBox();
             this.adminToiminnot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kenttäId)).BeginInit();
             this.SuspendLayout();
@@ -245,7 +245,7 @@
             // 
             this.klo.AutoSize = true;
             this.klo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.klo.Location = new System.Drawing.Point(388, 9);
+            this.klo.Location = new System.Drawing.Point(399, 9);
             this.klo.Name = "klo";
             this.klo.Size = new System.Drawing.Size(35, 16);
             this.klo.TabIndex = 20;
@@ -370,6 +370,56 @@
             this.adminToiminnot.TabStop = false;
             this.adminToiminnot.Text = "Admin";
             // 
+            // kenttäKaikkiTyöntekijät
+            // 
+            this.kenttäKaikkiTyöntekijät.FormattingEnabled = true;
+            this.kenttäKaikkiTyöntekijät.Location = new System.Drawing.Point(291, 74);
+            this.kenttäKaikkiTyöntekijät.Name = "kenttäKaikkiTyöntekijät";
+            this.kenttäKaikkiTyöntekijät.Size = new System.Drawing.Size(157, 23);
+            this.kenttäKaikkiTyöntekijät.TabIndex = 31;
+            // 
+            // kenttäTulostaLopetusPäivä
+            // 
+            this.kenttäTulostaLopetusPäivä.CustomFormat = "dd.MM.yyyy";
+            this.kenttäTulostaLopetusPäivä.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kenttäTulostaLopetusPäivä.Location = new System.Drawing.Point(291, 45);
+            this.kenttäTulostaLopetusPäivä.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.kenttäTulostaLopetusPäivä.Name = "kenttäTulostaLopetusPäivä";
+            this.kenttäTulostaLopetusPäivä.Size = new System.Drawing.Size(157, 21);
+            this.kenttäTulostaLopetusPäivä.TabIndex = 33;
+            this.kenttäTulostaLopetusPäivä.Value = new System.DateTime(2018, 7, 3, 0, 0, 0, 0);
+            // 
+            // kenttäTulostaAloitusPäivä
+            // 
+            this.kenttäTulostaAloitusPäivä.CustomFormat = "dd.MM.yyyy";
+            this.kenttäTulostaAloitusPäivä.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.kenttäTulostaAloitusPäivä.Location = new System.Drawing.Point(291, 17);
+            this.kenttäTulostaAloitusPäivä.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.kenttäTulostaAloitusPäivä.Name = "kenttäTulostaAloitusPäivä";
+            this.kenttäTulostaAloitusPäivä.Size = new System.Drawing.Size(157, 21);
+            this.kenttäTulostaAloitusPäivä.TabIndex = 31;
+            this.kenttäTulostaAloitusPäivä.Value = new System.DateTime(2018, 7, 3, 0, 0, 0, 0);
+            // 
+            // nappiPoista
+            // 
+            this.nappiPoista.Location = new System.Drawing.Point(373, 186);
+            this.nappiPoista.Name = "nappiPoista";
+            this.nappiPoista.Size = new System.Drawing.Size(75, 23);
+            this.nappiPoista.TabIndex = 32;
+            this.nappiPoista.Text = "Poista kir.";
+            this.nappiPoista.UseVisualStyleBackColor = true;
+            this.nappiPoista.Click += new System.EventHandler(this.nappiPoista_Click);
+            // 
+            // nappiTulosta
+            // 
+            this.nappiTulosta.Location = new System.Drawing.Point(291, 186);
+            this.nappiTulosta.Name = "nappiTulosta";
+            this.nappiTulosta.Size = new System.Drawing.Size(75, 23);
+            this.nappiTulosta.TabIndex = 31;
+            this.nappiTulosta.Text = "Tulosta";
+            this.nappiTulosta.UseVisualStyleBackColor = true;
+            this.nappiTulosta.Click += new System.EventHandler(this.nappiTulosta_Click);
+            // 
             // kenttäId
             // 
             this.kenttäId.Location = new System.Drawing.Point(110, 17);
@@ -408,56 +458,6 @@
             this.kenttäUseampiLöytyi.Visible = false;
             this.kenttäUseampiLöytyi.SelectionChangeCommitted += new System.EventHandler(this.kenttäUseampiLöytyi_SelectionChangeCommitted);
             this.kenttäUseampiLöytyi.Leave += new System.EventHandler(this.kenttäUseampiLöytyi_Leave);
-            // 
-            // nappiTulosta
-            // 
-            this.nappiTulosta.Location = new System.Drawing.Point(291, 186);
-            this.nappiTulosta.Name = "nappiTulosta";
-            this.nappiTulosta.Size = new System.Drawing.Size(75, 23);
-            this.nappiTulosta.TabIndex = 31;
-            this.nappiTulosta.Text = "Tulosta";
-            this.nappiTulosta.UseVisualStyleBackColor = true;
-            this.nappiTulosta.Click += new System.EventHandler(this.nappiTulosta_Click);
-            // 
-            // nappiPoista
-            // 
-            this.nappiPoista.Location = new System.Drawing.Point(373, 186);
-            this.nappiPoista.Name = "nappiPoista";
-            this.nappiPoista.Size = new System.Drawing.Size(75, 23);
-            this.nappiPoista.TabIndex = 32;
-            this.nappiPoista.Text = "Poista kir.";
-            this.nappiPoista.UseVisualStyleBackColor = true;
-            this.nappiPoista.Click += new System.EventHandler(this.nappiPoista_Click);
-            // 
-            // kenttäTulostaAloitusPäivä
-            // 
-            this.kenttäTulostaAloitusPäivä.CustomFormat = "dd.MM.yyyy";
-            this.kenttäTulostaAloitusPäivä.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.kenttäTulostaAloitusPäivä.Location = new System.Drawing.Point(291, 17);
-            this.kenttäTulostaAloitusPäivä.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.kenttäTulostaAloitusPäivä.Name = "kenttäTulostaAloitusPäivä";
-            this.kenttäTulostaAloitusPäivä.Size = new System.Drawing.Size(157, 21);
-            this.kenttäTulostaAloitusPäivä.TabIndex = 31;
-            this.kenttäTulostaAloitusPäivä.Value = new System.DateTime(2018, 7, 3, 0, 0, 0, 0);
-            // 
-            // kenttäTulostaLopetusPäivä
-            // 
-            this.kenttäTulostaLopetusPäivä.CustomFormat = "dd.MM.yyyy";
-            this.kenttäTulostaLopetusPäivä.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.kenttäTulostaLopetusPäivä.Location = new System.Drawing.Point(291, 45);
-            this.kenttäTulostaLopetusPäivä.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.kenttäTulostaLopetusPäivä.Name = "kenttäTulostaLopetusPäivä";
-            this.kenttäTulostaLopetusPäivä.Size = new System.Drawing.Size(157, 21);
-            this.kenttäTulostaLopetusPäivä.TabIndex = 33;
-            this.kenttäTulostaLopetusPäivä.Value = new System.DateTime(2018, 7, 3, 0, 0, 0, 0);
-            // 
-            // kenttäKaikkiTyöntekijät
-            // 
-            this.kenttäKaikkiTyöntekijät.FormattingEnabled = true;
-            this.kenttäKaikkiTyöntekijät.Location = new System.Drawing.Point(291, 74);
-            this.kenttäKaikkiTyöntekijät.Name = "kenttäKaikkiTyöntekijät";
-            this.kenttäKaikkiTyöntekijät.Size = new System.Drawing.Size(157, 23);
-            this.kenttäKaikkiTyöntekijät.TabIndex = 31;
             // 
             // Form2
             // 

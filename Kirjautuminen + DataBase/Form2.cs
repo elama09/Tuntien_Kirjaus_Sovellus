@@ -30,6 +30,8 @@ namespace Kirjautuminen___DataBase
             pvm.Text = DateTime.Now.ToShortDateString();
             klo.Text = DateTime.Now.ToLongTimeString();
             kenttäPäivä.Value = DateTime.Now.Date;
+            kenttäTulostaAloitusPäivä.Value = DateTime.Now.Date;
+            kenttäTulostaLopetusPäivä.Value = DateTime.Now.Date;
             YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
             kenttäKaikkiTyöntekijät.Items.AddRange(dBEntities.Työntekijät.Select(x => x.Käyttäjä_id.ToString() + " " + x.Käyttäjätunnus.ToString()).ToArray());
         }
