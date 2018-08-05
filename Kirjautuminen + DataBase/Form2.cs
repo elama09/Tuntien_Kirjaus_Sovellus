@@ -160,7 +160,7 @@ namespace Kirjautuminen___DataBase
                     Etunimi = kenttäEtunimi.Text,
                     Sukunimi = kenttäSukunimi.Text,
                     Käyttäjätunnus = kenttäKäyttäjätunnus.Text,
-                    Salasana = kenttäSalasana.Text,
+                    Salasana = Form1.Encrypt(kenttäSalasana.Text),
                     Luomispäivä = DateTime.Now.Date,
                     Admin = onkoAdmin
                 });
@@ -208,7 +208,8 @@ namespace Kirjautuminen___DataBase
             {
                 käyttäjä.Etunimi = kenttäEtunimi.Text;
                 käyttäjä.Sukunimi = kenttäSukunimi.Text;
-                käyttäjä.Salasana = kenttäSalasana.Text;
+                //käyttäjä.Salasana = kenttäSalasana.Text;
+                käyttäjä.Salasana = Form1.Encrypt(kenttäSalasana.Text); 
                 käyttäjä.Admin = nappiAdminTrue.Checked;
                 MessageBox.Show("Käyttäjätiedot päivitetty");
                 dBEntities.SaveChanges();

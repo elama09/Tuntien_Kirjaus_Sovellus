@@ -3,6 +3,8 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Kirjautuminen___DataBase.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Kirjautuminen___DataBase
 {
@@ -19,7 +21,7 @@ namespace Kirjautuminen___DataBase
             YdinvoimalaDBEntities dBEntities = new YdinvoimalaDBEntities();
 
             var käyttis = dBEntities.Työntekijät.Where(x => x.Käyttäjätunnus == kenttä_kirjautuminen.Text).FirstOrDefault();
-            if (käyttis != null && käyttis.Salasana == kenttä_salasana.Text)
+            if (käyttis != null && Form1.Encrypt(kenttä_salasana.Text) == käyttis.Salasana)
             {
                 Form2 form2 = new Form2(käyttis);
                 kenttä_kirjautuminen.Clear();
@@ -38,6 +40,17 @@ namespace Kirjautuminen___DataBase
         private void nappiLopeta_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        //Salasanan Hashaus
+        internal static string Encrypt(string value)
+        {
+            using (MD5CryptoServiceProvider md5= new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
+                return Convert.ToBase64String(data);
+            }
         }
     }
 }
